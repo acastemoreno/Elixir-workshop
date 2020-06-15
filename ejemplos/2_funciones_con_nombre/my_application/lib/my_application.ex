@@ -4,7 +4,7 @@ defmodule MyApplication do
   """
 
   @doc """
-  Hello world.
+  Factorial de un numero
 
   ## Examples
 
@@ -13,6 +13,8 @@ defmodule MyApplication do
 
   """
   def factorial(0), do: 1
-  def factorial(n), do: n* factorial(n-1)
+  def factorial(n) when is_integer(n) and n>0, do: n* factorial(n-1)
+  def factorial(n) when is_integer(n) and n<0, do: "Solo numeros positivos!"
+  def factorial(_), do: "Que paso amiguito?"
 
 end

@@ -246,7 +246,7 @@ iex> value
   :ARTICLE:  flexbox vleft auto-fadein
   :END:
 
-* variable = fn <parammetros> -> <ejecucion> end
+* fn -> end
   :PROPERTIES:
   :SLIDE:    segue dark quote
   :ASIDE:    right bottom
@@ -255,7 +255,7 @@ iex> value
 
 ** Funciones anonimas
 #+BEGIN_SRC elixir
-iex> <b>velocidad</b> = <br>fn</br> (distancia) <br>-></br> :math.sqrt(2 * 9.81 * distancia) <br>end</br>
+iex> <b>velocidad</b> = <b>fn</b> (distancia) <b>-></b> :math.sqrt(2 * 9.81 * distancia) <b>end</b>
 #Function<6.52032458/1 in :erl_eval.expr/5>
 iex> velocidad<b>.</b>(3)
 7.672027111526653
@@ -287,9 +287,15 @@ iex> intercambio.({6, 8})
 
 ** Una funcion anonima, multiples cuerpos
 #+BEGIN_CENTER
-#+ATTR_HTML: :width 450px
+#+ATTR_HTML: :width 800px
 [[file:images/file_open.png]]
 #+END_CENTER
+
+#+ATTR_HTML: :class note
+#+BEGIN_QUOTE
+Nota[fn:16]
+Nota[fn:17]
+#+END_QUOTE
 
 ** Una funcion anonima, multiples cuerpos
 #+BEGIN_SRC elixir
@@ -311,6 +317,53 @@ iex> verificar_archivo.(File.open("archivo_no_existente", [:read]))
   :ASIDE:    right bottom
   :ARTICLE:  flexbox vleft auto-fadein
   :END:
+
+* Creando un proyecto
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+$ mix new my_application
+
+** Funciones con nombre
+
+#+BEGIN_SRC elixir
+def factorial(0), do: 1
+def factorial(n), do: n* factorial(n-1)
+#+END_SRC
+
+#+ATTR_HTML: :class note
+#+BEGIN_QUOTE
+Nota[fn:15]
+#+END_QUOTE
+
+** Guard Clauses
+#+BEGIN_SRC elixir
+defmodule MyApplication do
+  def que_es(x) when is_number(x) do
+    "#{x} es un numero"
+  end
+  def que_es(x) when is_list(x) do
+    "#{inspect(x)} es una lista"
+  end
+end
+#+END_SRC
+
+** Factorial con Guard Clauses
+#+BEGIN_SRC elixir
+defmodule MyApplication do
+  def factorial(0), do: 1
+  def factorial(n) when is_integer(n) and n>0, do: n* factorial(n-1)
+  def factorial(n) when is_integer(n) and n<0, do: "Solo numeros positivos!"
+  def factorial(_), do: "Que paso amiguito?"
+end
+#+END_SRC
+
+#+ATTR_HTML: :class note
+#+BEGIN_QUOTE
+Nota[fn:18]
+#+END_QUOTE
 
 * Thank You ʕ•ᴥ•ʔ
 :PROPERTIES:
@@ -337,4 +390,6 @@ iex> verificar_archivo.(File.open("archivo_no_existente", [:read]))
 [fn:13] [[https://www.poeticoding.com/the-beauty-of-pattern-matching-in-elixir/][The beauty of Pattern Matching in elixir]]
 [fn:14] [[https://blog.carbonfive.com/2017/10/19/pattern-matching-in-elixir-five-things-to-remember/][Pattern Matching in Elixir: Five Things To Remember]]
 [fn:15] [[https://elixirschool.com/en/lessons/basics/functions/][ElixirSchool - Functions]]
-[fn:16] [[https://hexdocs.pm/elixir/File.html#open/2][Documentació]]
+[fn:16] [[https://hexdocs.pm/elixir/File.html#open/2][Documentación File.open]]
+[fn:17] [[https://medium.com/flatiron-labs/how-functions-pattern-match-in-elixir-12a44a51c6ad][How functions pattern match in Elixir]]
+[fn:18] [[https://hexdocs.pm/elixir/patterns-and-guards.html][Documentación Pattern and Guards]]
