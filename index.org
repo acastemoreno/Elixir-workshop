@@ -23,9 +23,237 @@
 #+LANGUAGE: es
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="theme/css/custom.css" />
 
+* Basic types
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+
+** Numeros
+- *Integer*
+  - Base diez: =1234=
+  - Hexagesimal: =0xcafe=
+  - Octal: =0o765=
+  - Binario: =0b1010=
+- *Float*:
+  - =1.0=
+  - =0.2456=
+  - =0.314159e1=
+  - =314159.0e-5=
+
+#+ATTR_HTML: :class note
+#+BEGIN_QUOTE
+Nota1[fn:1]
+Nota2[fn:2]
+#+END_QUOTE
+
+** Strings (UTF-8 encoded binaries)
+#+BEGIN_SRC elixir
+iex(1)> "Holi Woli"
+iex(2)> """
+...(2)> Texto multilinea
+...(2)> segunda linea
+...(2)> tercera linea
+...(2)> """
+iex(3)> "եոգլի"
+iex(4)> "多くあります"
+#+END_SRC
+
+#+ATTR_HTML: :class note
+#+BEGIN_QUOTE
+Nota3[fn:3]
+#+END_QUOTE
+
+** Nota: Strings
+Los =Strings= en Elixir se escribe solamente con =""=
+
+Existe un type similar a =String= que usa =''=. 
+
+Este type se llama =chart list= y solo sea usa cuando queremos usar librerias de Erlang.
+
+#+ATTR_HTML: :class note
+#+BEGIN_QUOTE
+Nota4[fn:4]
+nota5[fn:5]
+#+END_QUOTE
+
+** Atomos
+Equivalente a *Symbolos en Ruby*
+#+BEGIN_SRC elixir
+iex(1)> :esto_es_un_atomo
+iex(2)> :"Un atomo con espacios"
+iex(3)> true == :true
+iex(4)> false == :false
+iex(5)> nil == :nil
+iex(6)> :holi_woli
+iex(7)> Enum == :enum
+#+END_SRC
+
+#+ATTR_HTML: :class note
+#+BEGIN_QUOTE
+Nota[fn:6]
+Nota[fn:7]
+#+END_QUOTE
+
+** Tuples
+Es equivalente a listas en otros lenguajes.
+
+Fixed size container for multiple elements
+#+BEGIN_SRC elixir
+iex(1)> {}
+iex(2)> {1, :two, "three"}
+iex(3)> {:foo, :bar, :baz}
+iex(4)> {:ok, :returned_value}
+iex(5)> {:error, "Que paso amiguito?"}
+#+END_SRC
+
+#+ATTR_HTML: :class note
+#+BEGIN_QUOTE
+Nota[fn:8]
+Nota[fn:9]
+#+END_QUOTE
+
+** Maps (key-value)
+Es el equivalente a *hashes* en Ruby
+#+BEGIN_SRC elixir
+iex(1)> %{"holi" => "woli", a: 1, b: 2}
+iex(2)> <b>%{:nombre => "Albert", :edad => 28}
+%{nombre: "Albert", edad: 28}</b>
+iex(3)> %{:a => 1, "b" => 2, [:c, :e, :e] => 3}
+#+END_SRC
+
+#+ATTR_HTML: :class note
+#+BEGIN_QUOTE
+Nota[fn:10]
+#+END_QUOTE
+
+* 
+  :PROPERTIES:
+  :FILL:     images/rainbown.gif
+  :TITLE:    white
+  :SLIDE:    white contain-image
+  :END:
+
+* Pattern Matching
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+
+* 
+  :PROPERTIES:
+  :FILL:     images/babe_pattern.gif
+  :TITLE:    white
+  :SLIDE:    white contain-image
+  :END:
+
+* pattern = data
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END: 
+
+
+** Pattern Matching
+#+BEGIN_SRC elixir
+iex(1)> nombre = "Albert"
+"Albert"
+iex(2)> edad  = 28
+28
+iex(3)> nombre = "Amiguito"
+"Amiguito"
+iex(4)> nombre
+"Amiguito"
+iex(5)> edad
+28
+#+END_SRC
+
+#+ATTR_HTML: :class note
+#+BEGIN_QUOTE
+Nota[fn:11]
+#+END_QUOTE
+
+** Pattern Matching
+#+BEGIN_SRC elixir
+iex(1)> {frase, apodo, edad} = {"Albert", "Amiguito", 28}
+{"Albert", "Amiguito", 28}
+iex(2)> apodo
+"Amiguito"
+iex(3)> edad
+28
+#+END_SRC
+
+#+ATTR_HTML: :class note
+#+BEGIN_QUOTE
+Nota[fn:12]
+#+END_QUOTE
+
+** Pattern Matching ♥
+#+BEGIN_SRC elixir
+iex(1)> {edad, edad} = {28, 29}
+(MatchError) no match of right hand side value: {24, 25}
+
+iex(2)> {1, y, 1} = {1, 2, 3}
+(MatchError)
+iex(3)> {1, y, 3} = {1, 2, 3}
+{1, 2, 3}
+
+iex(4)> {{x}, 2, {message, x}} = {{7}, 2, {"holi woli", 9}}
+(MatchError)
+iex(5)> {{x}, 2, {message, x}} = {{7}, 2, {"holi woli", 7}}
+{{7}, 2, {"holi woli", 7}}
+iex(5)> message
+"holi woli"
+#+END_SRC
+
+#+ATTR_HTML: :class note
+#+BEGIN_QUOTE
+Nota[fn:13]
+Nota[fn:14]
+#+END_QUOTE
+
+** Pattern Matching
+:PROPERTIES:
+:ARTICLE:  smaller
+:END:
+#+BEGIN_SRC elixir
+iex> %{"holi" => mensaje} = %{"holi" => "woli", a: 1, b: 2}
+iex> mensaje
+
+iex> %{:a => <b>a</b>, "b" => <b>value</b>, [:c, :e, :e] => {<b>a</b>, 2, 3}} =  %{:a => <b>1</b>, "b" => <b>5</b>, [:c, :e, :e] => {<b>4</b>, 2, 3}}
+(MatchError)
+iex> %{:a => <b>a</b>, "b" => <b>value</b>, [:c, :e, :e] => {<b>a</b>, 2, 3}} =  %{:a => <b>1</b>, "b" => <b>5</b>, [:c, :e, :e] => {<b>1</b>, 2, 3}}
+iex> a
+1
+iex> value
+5
+#+END_SRC
+
+
 * Thank You ʕ•ᴥ•ʔ
 :PROPERTIES:
 :SLIDE: thank-you-slide segue
 :ASIDE: right
 :ARTICLE: flexbox vleft auto-fadein
 :END:
+
+
+* Footnotes
+[fn:1] [[https://hexdocs.pm/elixir/Integer.html][Documentación Integer]]
+[fn:2] [[https://hexdocs.pm/elixir/Float.html][Documentación Float]]
+[fn:3] [[https://hexdocs.pm/elixir/String.html][Documentación String]]
+
+[fn:4] [[https://elixir-lang.org/getting-started/binaries-strings-and-char-lists.html#binaries][Binaries, strings and char list]]
+[fn:5] [[https://inquisitivedeveloper.com/lwm-elixir-8/][Binaries en Elixir]]
+[fn:6] [[https://elixirschool.com/es/lessons/basics/basics/#%C3%A1tomos][ElixirSchool - Atomos]]
+[fn:7] [[https://medium.com/everydayhero-engineering/elixir-atoms-3b0f06bc47ef][Medium - Elixir Atoms]]
+[fn:8] [[https://hexdocs.pm/elixir/Tuple.html#content][Documentación Tuples]]
+[fn:9] Existe =list= en Elixir pero eso lo veremos mas adelante.
+[fn:10] [[https://hexdocs.pm/elixir/Map.html][Documentación Maps]]
+[fn:11] Amiguito, no hay nada especial en ello. Es una simple asignación.
+[fn:12] Amiguito, sigue sin ser especial, es como un *destructuring* de JS. :| 
+[fn:13] [[https://www.poeticoding.com/the-beauty-of-pattern-matching-in-elixir/][The beauty of Pattern Matching in elixir]]
+[fn:14] [[https://blog.carbonfive.com/2017/10/19/pattern-matching-in-elixir-five-things-to-remember/][Pattern Matching in Elixir: Five Things To Remember]]

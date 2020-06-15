@@ -2,7 +2,7 @@
 <html>
 <head>
 <title></title>
-<!-- 2020-06-14 dom 17:12 -->
+<!-- 2020-06-15 lun 14:45 -->
 <meta  charset="utf-8" />
 <meta  htto-equiv="X-UA-Compatible" content="chrome=1" />
 <meta  name="generator" content="Org-mode with org-ioslide" />
@@ -36,7 +36,529 @@
          <p data-config-presenter><!-- populated from slide_config.json --></p>
        </hgroup>
     </slide>
-  <slide id="sec-" class=" thank-you-slide segue nobackground" style="background-image: url(nil)">
+  <slide id="sec-" class=" segue dark quote nobackground" style="background-image: url(nil)">
+<aside class="gdbar right bottom"><img src="images/elixir.png"></aside><hgroup class="">
+       <h2 class=" "><div id="outline-container-orgea2820e" class="outline-2">
+<h2 id="orgea2820e">Basic types</h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="flexbox vleft auto-fadein" id="text-">
+
+
+</article>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgcfc3ee6" class="outline-3">
+<h3 id="orgcfc3ee6">Numeros</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<ul>
+<li><b>Integer</b>
+<ul>
+<li>Base diez: <code>1234</code></li>
+<li>Hexagesimal: <code>0xcafe</code></li>
+<li>Octal: <code>0o765</code></li>
+<li>Binario: <code>0b1010</code></li>
+</ul></li>
+<li><b>Float</b>:
+<ul>
+<li><code>1.0</code></li>
+<li><code>0.2456</code></li>
+<li><code>0.314159e1</code></li>
+<li><code>314159.0e-5</code></li>
+</ul></li>
+</ul>
+
+<aside class="note">
+  <section>
+<p>
+Nota1<sup>1</sup>
+Nota2<sup>2</sup>
+</p>
+
+  </section>
+</aside>
+
+<footer class="source">
+<p class="footpara">1. 
+<a href="https://hexdocs.pm/elixir/Integer.html">Documentación Integer</a>
+</p>
+<p class="footpara">2. 
+<a href="https://hexdocs.pm/elixir/Float.html">Documentación Float</a>
+</p>
+</footer>
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org4224e4b" class="outline-3">
+<h3 id="org4224e4b">Strings (UTF-8 encoded binaries)</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="elixir">
+iex(1)&gt; "Holi Woli"
+iex(2)&gt; """
+...(2)&gt; Texto multilinea
+...(2)&gt; segunda linea
+...(2)&gt; tercera linea
+...(2)&gt; """
+iex(3)&gt; "եոգլի"
+iex(4)&gt; "多くあります"</pre>
+
+</div>
+
+<aside class="note">
+  <section>
+<p>
+Nota3<sup>1</sup>
+</p>
+
+  </section>
+</aside>
+
+<footer class="source">
+<p class="footpara">1. 
+<a href="https://hexdocs.pm/elixir/String.html">Documentación String</a>
+</p>
+</footer>
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orge5807f1" class="outline-3">
+<h3 id="orge5807f1">Nota: Strings</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<p>
+Los <code>Strings</code> en Elixir se escribe solamente con <code>""</code>
+</p>
+
+<p>
+Existe un type similar a <code>String</code> que usa <code>''</code>. 
+</p>
+
+<p>
+Este type se llama <code>chart list</code> y solo sea usa cuando queremos usar librerias de Erlang.
+</p>
+
+<aside class="note">
+  <section>
+<p>
+Nota4<sup>1</sup>
+nota5<sup>2</sup>
+</p>
+
+  </section>
+</aside>
+
+<footer class="source">
+<p class="footpara">1. 
+<a href="https://elixir-lang.org/getting-started/binaries-strings-and-char-lists.html#binaries">Binaries, strings and char list</a>
+</p>
+<p class="footpara">2. 
+<a href="https://inquisitivedeveloper.com/lwm-elixir-8/">Binaries en Elixir</a>
+</p>
+</footer>
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org5c7c510" class="outline-3">
+<h3 id="org5c7c510">Atomos</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<p>
+Equivalente a <b>Symbolos en Ruby</b>
+</p>
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="elixir">
+iex(1)&gt; :esto_es_un_atomo
+iex(2)&gt; :"Un atomo con espacios"
+iex(3)&gt; true == :true
+iex(4)&gt; false == :false
+iex(5)&gt; nil == :nil
+iex(6)&gt; :holi_woli
+iex(7)&gt; Enum == :enum</pre>
+
+</div>
+
+<aside class="note">
+  <section>
+<p>
+Nota<sup>1</sup>
+Nota<sup>2</sup>
+</p>
+
+  </section>
+</aside>
+
+<footer class="source">
+<p class="footpara">1. 
+<a href="https://elixirschool.com/es/lessons/basics/basics/#%C3%A1tomos">ElixirSchool - Atomos</a>
+</p>
+<p class="footpara">2. 
+<a href="https://medium.com/everydayhero-engineering/elixir-atoms-3b0f06bc47ef">Medium - Elixir Atoms</a>
+</p>
+</footer>
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgcf98f92" class="outline-3">
+<h3 id="orgcf98f92">Tuples</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<p>
+Es equivalente a listas en otros lenguajes.
+</p>
+
+<p>
+Fixed size container for multiple elements
+</p>
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="elixir">
+iex(1)&gt; {}
+iex(2)&gt; {1, :two, "three"}
+iex(3)&gt; {:foo, :bar, :baz}
+iex(4)&gt; {:ok, :returned_value}
+iex(5)&gt; {:error, "Que paso amiguito?"}</pre>
+
+</div>
+
+<aside class="note">
+  <section>
+<p>
+Nota<sup>1</sup>
+Nota<sup>2</sup>
+</p>
+
+  </section>
+</aside>
+
+<footer class="source">
+<p class="footpara">1. 
+<a href="https://hexdocs.pm/elixir/Tuple.html#content">Documentación Tuples</a>
+</p>
+<p class="footpara">2. 
+Existe <code>list</code> en Elixir pero eso lo veremos mas adelante.
+</p>
+</footer>
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org429c68d" class="outline-3">
+<h3 id="org429c68d">Maps (key-value)</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<p>
+Es el equivalente a <b>hashes</b> en Ruby
+</p>
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="elixir">
+iex(1)&gt; %{"holi" =&gt; "woli", a: 1, b: 2}
+iex(2)&gt; <b>%{:nombre =&gt; "Albert", :edad =&gt; 28}
+%{nombre: "Albert", edad: 28}</b>
+iex(3)&gt; %{:a =&gt; 1, "b" =&gt; 2, [:c, :e, :e] =&gt; 3}</pre>
+
+</div>
+
+<aside class="note">
+  <section>
+<p>
+Nota<sup>1</sup>
+</p>
+
+  </section>
+</aside>
+
+<footer class="source">
+<p class="footpara">1. 
+<a href="https://hexdocs.pm/elixir/Map.html">Documentación Maps</a>
+</p>
+</footer>
+</article>
+
+</slide>
+
+</slide>
+
+</slide>
+<slide id="sec-" class="fill white contain-image nobackground" style="background-image: url(images/rainbown.gif)">
+<hgroup class="">
+       <h2 class="white "><div id="outline-container-org1ff18b9" class="outline-2">
+<h2 id="org1ff18b9"></h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-" class=" segue dark quote nobackground" style="background-image: url(nil)">
+<aside class="gdbar right bottom"><img src="images/elixir.png"></aside><hgroup class="">
+       <h2 class=" "><div id="outline-container-org5d76ee3" class="outline-2">
+<h2 id="org5d76ee3">Pattern Matching</h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="flexbox vleft auto-fadein" id="text-">
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-" class="fill white contain-image nobackground" style="background-image: url(images/babe_pattern.gif)">
+<hgroup class="">
+       <h2 class="white "><div id="outline-container-org955bce0" class="outline-2">
+<h2 id="org955bce0"></h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+
+
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-" class=" segue dark quote nobackground" style="background-image: url(nil)">
+<aside class="gdbar right bottom"><img src="images/elixir.png"></aside><hgroup class="">
+       <h2 class=" "><div id="outline-container-org77f46be" class="outline-2">
+<h2 id="org77f46be">pattern = data</h2>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="flexbox vleft auto-fadein" id="text-">
+
+
+</article>
+
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgad231d4" class="outline-3">
+<h3 id="orgad231d4">Pattern Matching</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="elixir">
+iex(1)&gt; nombre = "Albert"
+"Albert"
+iex(2)&gt; edad  = 28
+28
+iex(3)&gt; nombre = "Amiguito"
+"Amiguito"
+iex(4)&gt; nombre
+"Amiguito"
+iex(5)&gt; edad
+28</pre>
+
+</div>
+
+<aside class="note">
+  <section>
+<p>
+Nota<sup>1</sup>
+</p>
+
+  </section>
+</aside>
+
+<footer class="source">
+<p class="footpara">1. 
+Amiguito, no hay nada especial en ello. Es una simple asignación.
+</p>
+</footer>
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org8b1571e" class="outline-3">
+<h3 id="org8b1571e">Pattern Matching</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="elixir">
+iex(1)&gt; {frase, apodo, edad} = {"Albert", "Amiguito", 28}
+{"Albert", "Amiguito", 28}
+iex(2)&gt; apodo
+"Amiguito"
+iex(3)&gt; edad
+28</pre>
+
+</div>
+
+<aside class="note">
+  <section>
+<p>
+Nota<sup>1</sup>
+</p>
+
+  </section>
+</aside>
+
+<footer class="source">
+<p class="footpara">1. 
+Amiguito, sigue sin ser especial, es como un <b>destructuring</b> de JS. :| 
+</p>
+</footer>
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-org9c38972" class="outline-3">
+<h3 id="org9c38972">Pattern Matching ♥</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="elixir">
+iex(1)&gt; {edad, edad} = {28, 29}
+(MatchError) no match of right hand side value: {24, 25}
+
+iex(2)&gt; {1, y, 1} = {1, 2, 3}
+(MatchError)
+iex(3)&gt; {1, y, 3} = {1, 2, 3}
+{1, 2, 3}
+
+iex(4)&gt; {{x}, 2, {message, x}} = {{7}, 2, {"holi woli", 9}}
+(MatchError)
+iex(5)&gt; {{x}, 2, {message, x}} = {{7}, 2, {"holi woli", 7}}
+{{7}, 2, {"holi woli", 7}}
+iex(5)&gt; message
+"holi woli"</pre>
+
+</div>
+
+<aside class="note">
+  <section>
+<p>
+Nota<sup>1</sup>
+Nota<sup>2</sup>
+</p>
+
+  </section>
+</aside>
+
+<footer class="source">
+<p class="footpara">1. 
+<a href="https://www.poeticoding.com/the-beauty-of-pattern-matching-in-elixir/">The beauty of Pattern Matching in elixir</a>
+</p>
+<p class="footpara">2. 
+<a href="https://blog.carbonfive.com/2017/10/19/pattern-matching-in-elixir-five-things-to-remember/">Pattern Matching in Elixir: Five Things To Remember</a></p>
+</footer>
+</article>
+
+</slide>
+
+</slide>
+<slide id="sec-"  >
+<hgroup class="">
+       <h2 class=" "><div id="outline-container-orgf3680ee" class="outline-3">
+<h3 id="orgf3680ee">Pattern Matching</h3>
+</div>
+</h2>
+       <h3></h3>
+       </hgroup>
+<article class="smaller" id="text-">
+<div class="org-src-container">
+
+<pre class="prettyprint" data-lang="elixir">
+iex&gt; %{"holi" =&gt; mensaje} = %{"holi" =&gt; "woli", a: 1, b: 2}
+iex&gt; mensaje
+
+iex&gt; %{:a =&gt; <b>a</b>, "b" =&gt; <b>value</b>, [:c, :e, :e] =&gt; {<b>a</b>, 2, 3}} =  %{:a =&gt; <b>1</b>, "b" =&gt; <b>5</b>, [:c, :e, :e] =&gt; {<b>4</b>, 2, 3}}
+(MatchError)
+iex&gt; %{:a =&gt; <b>a</b>, "b" =&gt; <b>value</b>, [:c, :e, :e] =&gt; {<b>a</b>, 2, 3}} =  %{:a =&gt; <b>1</b>, "b" =&gt; <b>5</b>, [:c, :e, :e] =&gt; {<b>1</b>, 2, 3}}
+iex&gt; a
+1
+iex&gt; value
+5</pre>
+
+</div>
+
+
+</article>
+
+</slide>
+
+</slide>
+
+
+</slide>
+<slide id="sec-" class=" thank-you-slide segue nobackground" style="background-image: url(nil)">
 <aside class="gdbar right"><img src="images/elixir.png"></aside><article class="flexbox vleft auto-fadein" id="text-">
 <h2>
   <p>Thank You ʕ•ᴥ•ʔ</p>
