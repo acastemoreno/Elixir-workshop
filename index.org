@@ -232,6 +232,85 @@ iex> value
 5
 #+END_SRC
 
+* Funciones
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+
+* Funciones anonimas
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
+
+* variable = fn <parammetros> -> <ejecucion> end
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END: 
+
+** Funciones anonimas
+#+BEGIN_SRC elixir
+iex> <b>velocidad</b> = <br>fn</br> (distancia) <br>-></br> :math.sqrt(2 * 9.81 * distancia) <br>end</br>
+#Function<6.52032458/1 in :erl_eval.expr/5>
+iex> velocidad<b>.</b>(3)
+7.672027111526653
+iex> sum = fn (a, b) -> a + b end
+#Function<12.17052888 in :erl_eval.expr/5>
+iex> sum.(1, 2)
+3
+#+END_SRC
+
+** Funciones anonimas creadas en multiples Lineas
+#+BEGIN_SRC elixir
+iex> velocidad = fn 
+...> distancia -> :math.sqrt(2 * 9.81 * distancia)
+...> end
+#Function<6.52032458/1 in :erl_eval.expr/5>
+iex> velocidad.(10)
+14.007141035914502
+#+END_SRC
+
+** Funciones Anonimas y Pattern Matching
+#+BEGIN_SRC elixir
+iex> intercambio = fn 
+...> {primero, segundo} -> {segundo, primero}
+...> end
+#Function<6.52032458/1 in :erl_eval.expr/5>
+iex> intercambio.({6, 8})
+{8, 6}
+#+END_SRC
+
+** Una funcion anonima, multiples cuerpos
+#+BEGIN_CENTER
+#+ATTR_HTML: :width 450px
+[[file:images/file_open.png]]
+#+END_CENTER
+
+** Una funcion anonima, multiples cuerpos
+#+BEGIN_SRC elixir
+iex> verificar_archivo = fn
+...> {:ok, archivo} ->
+...> result = "Leyendo archivo: #{IO.read(archivo, :line)}"
+...> File.close(archivo)
+...> result
+...> {_, error}  -> "Error: #{:file.format_error(error)}"
+...> end
+
+iex> verificar_archivo.(File.open("holiwoli.txt", [:read]))
+iex> verificar_archivo.(File.open("archivo_no_existente", [:read]))
+#+END_SRC
+
+* Funciones con nombre
+  :PROPERTIES:
+  :SLIDE:    segue dark quote
+  :ASIDE:    right bottom
+  :ARTICLE:  flexbox vleft auto-fadein
+  :END:
 
 * Thank You ʕ•ᴥ•ʔ
 :PROPERTIES:
@@ -257,3 +336,5 @@ iex> value
 [fn:12] Amiguito, sigue sin ser especial, es como un *destructuring* de JS. :| 
 [fn:13] [[https://www.poeticoding.com/the-beauty-of-pattern-matching-in-elixir/][The beauty of Pattern Matching in elixir]]
 [fn:14] [[https://blog.carbonfive.com/2017/10/19/pattern-matching-in-elixir-five-things-to-remember/][Pattern Matching in Elixir: Five Things To Remember]]
+[fn:15] [[https://elixirschool.com/en/lessons/basics/functions/][ElixirSchool - Functions]]
+[fn:16] [[https://hexdocs.pm/elixir/File.html#open/2][Documentació]]
